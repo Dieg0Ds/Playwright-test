@@ -62,7 +62,7 @@ test.describe('Desafio Técnico Sauce Demo', () => {
     test('7. Ordenação de produtos (Preço: Low to High)', async ({ page }) => {
       await inventory.ordenar('lohi');
       const precos = await page.locator('.inventory_item_price').allInnerTexts();
-      const valores = precos.map(p => parseFloat(p.replace('$', '')));
+      const valores = precos.map(p => Number.parseFloat(p.replace('$', '')));
       expect(valores).toEqual([...valores].sort((a, b) => a - b));
     });
 
